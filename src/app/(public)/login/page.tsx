@@ -1,7 +1,12 @@
-import React from "react";
-
-const Login = () => {
-  return <div>Login</div>;
-};
-
-export default Login;
+import { login } from "../../utils/authUtils/authActions";
+export default function LoginPage() {
+  return (
+    <form>
+      <label htmlFor="email">Email:</label>
+      <input id="email" name="email" type="email" required />
+      <label htmlFor="password">Password:</label>
+      <input id="password" name="password" type="password" required />
+      <button formAction={login}>Log in</button>
+    </form>
+  );
+}
