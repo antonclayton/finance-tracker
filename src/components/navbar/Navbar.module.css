@@ -37,6 +37,16 @@
   }
 }
 
+.hiddenLinks {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
 .navLink {
   font-weight: 500;
   color: var(--nav-link-color);
