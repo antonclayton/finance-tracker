@@ -17,16 +17,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser();
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <html lang="en">
       <body>
         <ThemeProvider theme={darkTheme}>
           <div
-            className={`${styles.container}${nunitoSans.variable} ${inter.variable} ${zillaSlab.variable}`}
+            className={`${styles.container} ${nunitoSans.variable} ${inter.variable} ${zillaSlab.variable}`}
           >
-            <Navbar user={user}/>
+            <Navbar user={user} />
             {/* All your page content will be rendered inside this main tag */}
             <main className={styles.pageContent}>{children}</main>
           </div>

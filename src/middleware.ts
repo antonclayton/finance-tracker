@@ -11,16 +11,8 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Define the protected route path.
-  const protectedPaths = [
-    "/dashboard",
-    "/reports",
-    "/profile",
-    "/transactions",
-  ];
-
-  // Check if the user is not authenticated and the requested path is a protected one.
-  if (!user && protectedPaths.includes(request.nextUrl.pathname)) {
+  // Check if the user is not authenticated
+  if (!user) {
     // Redirect to the login page or an auth-error page.
     return NextResponse.redirect(new URL("/auth-error", request.url));
   }
@@ -31,5 +23,10 @@ export async function middleware(request: NextRequest) {
 
 // protects routes that match the following
 export const config = {
-  matcher: ["/dashboard", "/profile", "/reports", "/transactions"],
+  matcher: [
+    "/dashboard/:path*",
+    "/profile/:path*",
+    "/reports/:path*",
+    "/transactions/:path*",
+  ],
 };

@@ -32,6 +32,23 @@ declare module "@mui/material/styles" {
 export const darkTheme = createTheme({
   palette: {
     mode: "dark",
+
+    // Standard MUI palette mapping
+    primary: {
+      main: "#00b06b", // maps to your --primary-accent
+    },
+    secondary: {
+      main: "#2d2d2d", // optional, maps to --navbar-bg
+    },
+    background: {
+      default: "#1a1a1a", // maps to --bg-color
+      paper: "#2d2d2d", // maps to --navbar-bg
+    },
+    text: {
+      primary: "#f0f0f0", // maps to --text-color
+    },
+
+    // Custom colors for your specific needs
     custom: {
       bg: "#1a1a1a",
       text: "#f0f0f0",
