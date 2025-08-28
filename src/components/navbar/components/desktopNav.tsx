@@ -5,12 +5,11 @@ import { NavLink } from "@/app/utils/types/navTypes";
 
 interface DesktopNavProps {
   navLinks: NavLink[];
-  className: string;
 }
 
-const DesktopNav: React.FC<DesktopNavProps> = ({ navLinks, className }) => {
+const DesktopNav: React.FC<DesktopNavProps> = ({ navLinks }) => {
   return (
-    <div className={`${styles.desktopNav} ${className}`}>
+    <div className={styles.desktopNav}>
       {navLinks.map((link) => (
         <Link key={link.name} href={link.href} className={styles.navLink}>
           {link.name}
