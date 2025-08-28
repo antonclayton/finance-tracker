@@ -7,12 +7,16 @@ interface MobileMenuProps {
   navLinks: NavLink[];
   isOpen: boolean;
   onClose: () => void;
+  handleLogout: () => void;
+  isLoggedIn: boolean;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   navLinks,
   isOpen,
   onClose,
+  handleLogout,
+  isLoggedIn,
 }) => {
   if (!isOpen) return null;
 
@@ -29,6 +33,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             {link.name}
           </Link>
         ))}
+        {isLoggedIn && (
+          <form action={handleLogout}>
+            <button
+              className={`${styles.mobileNavLink} ${styles.mobileLogoutButton}`}
+            >
+              Logout
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

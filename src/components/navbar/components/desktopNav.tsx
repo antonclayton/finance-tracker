@@ -5,9 +5,15 @@ import { NavLink } from "@/app/utils/types/navTypes";
 
 interface DesktopNavProps {
   navLinks: NavLink[];
+  handleLogout: () => void;
+  isLoggedIn: boolean;
 }
 
-const DesktopNav: React.FC<DesktopNavProps> = ({ navLinks }) => {
+const DesktopNav: React.FC<DesktopNavProps> = ({
+  navLinks,
+  handleLogout,
+  isLoggedIn,
+}) => {
   return (
     <div className={styles.desktopNav}>
       {navLinks.map((link) => (
@@ -15,6 +21,13 @@ const DesktopNav: React.FC<DesktopNavProps> = ({ navLinks }) => {
           {link.name}
         </Link>
       ))}
+      {isLoggedIn && (
+        <form action={handleLogout}>
+          <button className={`${styles.navLink} ${styles.logoutButton}`}>
+            Logout
+          </button>
+        </form>
+      )}
     </div>
   );
 };

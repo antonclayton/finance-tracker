@@ -28,6 +28,7 @@
 .desktopNav {
   display: none;
   gap: 1.5rem;
+  align-items: center;
 }
 
 /* Show desktop nav on screens larger than 'sm' (640px) */
@@ -114,4 +115,39 @@
   to {
     transform: translateY(0);
   }
+}
+
+/* Override button-specific styles from the navLink class */
+.logoutButton {
+  /* Reset default button styles */
+  background-color: var(--primary-accent);
+  padding: 0.25rem 0.75rem; /* Add some padding to make it look like a button */
+  border-radius: 4px;
+  /* Ensure the font and color match navLink */
+  color: var(--navbar-bg);
+  transition: transform 0.3s ease; /* Ensure the hover effect is still smooth */
+}
+
+.logoutButton:hover {
+  transform: scale(1.05);
+  color: var(--navbar-bg);
+  background-color: var(--primary-accent);
+}
+
+/* Override button-specific styles from the mobileNavLink class */
+.mobileLogoutButton {
+  /* Reset default button styles */
+  background-color: var(--primary-accent);
+  border: none;
+  padding: 1rem 2rem; /* Adjust padding for mobile view */
+  color: var(--navbar-bg);
+  border-radius: 8px;
+  transition: transform 0.3s ease; /* Ensure the hover effect is still smooth */
+}
+
+.mobileLogoutButton:hover {
+  transform: scale(1.03);
+  background-color: var(
+    --primary-accent
+  ); /* This ensures it stays the primary color */
 }
