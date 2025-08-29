@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./page.module.css";
+import styles from "./CheckEmailPage.module.css";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 
 export default function AuthError() {
