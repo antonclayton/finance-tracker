@@ -1,15 +1,9 @@
-## Getting Started
+## NextJS + Supabase
 
-First, run the development server:
+- BRANCH for boilerplate/starter code. Uses NextJS, Supabase Server-side Auth, and Zustand. Easily Customizable.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### Features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Navbar (responsive to user auth status)
+- Zustand Auth Store
+- Supabase backend setup
