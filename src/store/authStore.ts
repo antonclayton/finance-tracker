@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -9,24 +10,29 @@ interface AuthState {
   setLoading: (isLoading: boolean) => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  // Initial state
-  isLoggedIn: false,
-  user: null,
-  loading: true,
-
-  // Actions to update the state
-  login: (userData) =>
-    set({
-      isLoggedIn: true,
-      user: userData,
-      loading: false,
-    }),
-  logout: () =>
-    set({
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
       isLoggedIn: false,
       user: null,
-      loading: false,
+      loading: true,
+      login: (userData) =>
+        set({
+          isLoggedIn: true,
+          user: userData,
+          loading: false,
+        }),
+      logout: () =>
+        set({
+          isLoggedIn: false,
+          user: null,
+          loading: false,
+        }),
+      setLoading: (isLoading) => set({ loading: isLoading }),
     }),
-  setLoading: (isLoading) => set({ loading: isLoading }),
-}));
+    {
+      name: "auth-storage", // key in localStorage
+      storage: createJSONStorage(() => localStorage), // defaults to localStorage
+    }
+  )
+);
