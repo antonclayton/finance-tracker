@@ -1,10 +1,26 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { signup } from "../../utils/authUtils/authActions";
 import styles from "./SignupPage.module.css";
 
+// Simple email validation util
+function isValidEmail(email: string) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
 export default function SignupPage() {
+  const [email, setEmail] = useState("");
+  const [emailValid, setEmailValid] = useState(false);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    setEmailValid(isValidEmail(value));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -19,7 +35,10 @@ export default function SignupPage() {
             type="email"
             required
             className={styles.input}
+            value={email}
+            onChange={handleEmailChange}
           />
+          {!emailValid && <p className={styles.error}>Invalid email address</p>}
 
           <label htmlFor="password">Password:</label>
           <input
@@ -30,7 +49,12 @@ export default function SignupPage() {
             className={styles.input}
           />
 
-          <button type="submit" formAction={signup} className={styles.button}>
+          <button
+            type="submit"
+            formAction={signup}
+            className={styles.button}
+            disabled={!emailValid}
+          >
             Sign Up
           </button>
         </form>
