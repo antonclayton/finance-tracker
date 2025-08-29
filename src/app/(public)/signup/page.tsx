@@ -13,13 +13,25 @@ function isValidEmail(email: string) {
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
-  const [emailValid, setEmailValid] = useState(false);
+  const [emailValid, setEmailValid] = useState(true);
+
+  const [password, setPassword] = useState("");
+  const [passwordValid, setPasswordValid] = useState(true);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
     setEmailValid(isValidEmail(value));
   };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setPassword(value);
+    setPasswordValid(value.length >= 8);
+  };
+
+  const isFormValid =
+    emailValid && passwordValid && email !== "" && password !== "";
 
   return (
     <div className={styles.container}>
@@ -47,13 +59,21 @@ export default function SignupPage() {
             type="password"
             required
             className={styles.input}
+            value={password}
+            onChange={handlePasswordChange}
           />
+
+          {!passwordValid && (
+            <p className={styles.error}>
+              Password must be at least 8 characters
+            </p>
+          )}
 
           <button
             type="submit"
             formAction={signup}
             className={styles.button}
-            disabled={!emailValid}
+            disabled={!isFormValid}
           >
             Sign Up
           </button>
