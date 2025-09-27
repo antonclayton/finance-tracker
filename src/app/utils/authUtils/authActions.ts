@@ -28,12 +28,18 @@ export async function login(formData: FormData) {
 export async function signup(formData: FormData) {
   const supabase = await createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
   const data = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
+
+  // Basic server-side validation (mirrors client checks)
+  if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    redirect("/auth-error");
+  }
+  if (!data.password || data.password.length < 8) {
+    redirect("/auth-error");
+  }
 
   const {
     data: { user },
@@ -45,6 +51,7 @@ export async function signup(formData: FormData) {
   }
 
   if (user && !user.user_metadata.email_verified) {
+    // On success, redirect. Errors are handled via returned state above.
     redirect("/check-email");
   }
 
