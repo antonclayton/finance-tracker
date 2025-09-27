@@ -24,9 +24,6 @@ export async function middleware(request: NextRequest) {
 // protects routes that match the following
 export const config = {
   matcher: [
-    "/dashboard/:path*",
-    "/profile/:path*",
-    "/reports/:path*",
-    "/transactions/:path*",
+    "/protected/:path*"
   ],
 };
