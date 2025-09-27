@@ -4,12 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signup } from "../../utils/authUtils/authActions";
 import styles from "./SignupPage.module.css";
-
-// Simple email validation util
-function isValidEmail(email: string) {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
+import { isValidEmail } from "../../utils/authUtils/authValidation";
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");

@@ -9,6 +9,13 @@ export default function LoginPage() {
     <div className={styles.container}>
       <div className={styles.card}>
         <h1 className={styles.title}>Welcome Back</h1>
+          <p className={styles.toggleMessage}>
+            Forgot Password?{" "}
+            <Link href="/forgot-password" className={styles.toggleForgotPasswordLink}>
+              Click here!
+            </Link>
+          </p>
+          
         <form className={styles.form}>
           <label htmlFor="email" className={styles.label}>
             Email:
@@ -37,7 +44,7 @@ export default function LoginPage() {
 
         <p className={styles.toggleMessage}>
           Don’t have an account?{" "}
-          <Link href="/signup" className={styles.toggleLink}>
+          <Link href="/signup" className={styles.toggleNoAccountLink}>
             Sign up here
           </Link>
         </p>

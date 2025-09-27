@@ -17,7 +17,8 @@
 
 .title {
   font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
   color: var(--primary-accent);
 }
 
@@ -60,6 +61,7 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .button:hover {
@@ -67,12 +69,13 @@
 }
 
 .toggleMessage {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
   color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
-.toggleLink {
+.toggleNoAccountLink {
   color: var(--primary-accent);
   text-decoration: none;
   font-weight: 500;
@@ -80,6 +83,18 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.toggleLink:hover {
+.toggleNoAccountLink:hover {
+  transform: scale(1.05);
+}
+
+.toggleForgotPasswordLink {
+  color: var(--primary-accent);
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.toggleForgotPasswordLink:hover {
   transform: scale(1.05);
 }
