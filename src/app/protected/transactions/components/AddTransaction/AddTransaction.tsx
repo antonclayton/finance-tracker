@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './AddTransaction.module.css'
 
 const AddTransaction = () => {
   return (
-    <div>AddTransaction</div>
+    <button type="button" className={styles.button}>Add Transaction</button>
   )
 }
 

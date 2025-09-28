@@ -1,0 +1,16 @@
+.header {
+  margin: 24px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--navbar-border);
+}
+
+.title {
+  margin: 0;
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+  /* Responsive large heading */
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+}
+
